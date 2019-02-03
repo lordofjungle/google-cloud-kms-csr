@@ -28,6 +28,9 @@ func main() {
 	commonNameFlag := flag.String("common-name", "", "")
 	orgFlag := flag.String("org", "", "")
 	emailFlag := flag.String("email", "", "")
+	countryFlag := flag.String("country", "US", "")
+	provinceFlag := flag.String("province", "California", "")
+	localityFlag := flag.String("locality", "San Francisco", "")
 	outFlag := flag.String("out", "out.csr", "")
 	flag.Parse()
 
@@ -50,9 +53,9 @@ func main() {
 		CommonName:         *commonNameFlag,
 		Organization:       []string{*orgFlag},
 		OrganizationalUnit: []string{""},
-		Country:            []string{"US"},
-		Province:           []string{"California"},
-		Locality:           []string{"San Francisco"},
+		Country:            []string{*countryFlag},
+		Province:           []string{*provinceFlag},
+		Locality:           []string{*localityFlag},
 	}
 
 	rawSubj := subj.ToRDNSequence()
